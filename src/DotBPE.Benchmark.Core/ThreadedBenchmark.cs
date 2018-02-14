@@ -39,6 +39,8 @@ namespace DotBPE.Benchmark.Core
             {
                 thread.Join();
             }
+
+
             Console.WriteLine("All threads finished (GC Stats Delta: " + gcStats.GetSnapshot() + ")");
         }
     }

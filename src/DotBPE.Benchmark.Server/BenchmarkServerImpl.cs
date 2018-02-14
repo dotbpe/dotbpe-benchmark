@@ -10,7 +10,7 @@ namespace DotBPE.Benchmark.Server
     public class BenchmarkServerImpl : BenchmarkTestBase
     {
        
-        public override Task<RpcResult<BenchmarkMessage>> Test10MSAsync(BenchmarkMessage req)
+        public override async Task<RpcResult<BenchmarkMessage>> Test10MSAsync(BenchmarkMessage req)
         {
             req.Field1 = "OK";
             req.Field2 = 100;
@@ -18,12 +18,12 @@ namespace DotBPE.Benchmark.Server
             var res = new RpcResult<BenchmarkMessage>();
             res.Data = req;
 
-            Task.Delay(10).Wait();
+            await Task.Delay(10);
            
-            return Task.FromResult(res);
+            return res;
         }
 
-        public override Task<RpcResult<BenchmarkMessage>> Test30MSAsync(BenchmarkMessage req)
+        public override async Task<RpcResult<BenchmarkMessage>> Test30MSAsync(BenchmarkMessage req)
         {
             req.Field1 = "OK";
             req.Field2 = 100;
@@ -31,8 +31,8 @@ namespace DotBPE.Benchmark.Server
             var res = new RpcResult<BenchmarkMessage>();
             res.Data = req;
 
-            Task.Delay(30).Wait();
-            return Task.FromResult(res);
+            await Task.Delay(30);
+            return res;
         }
 
         public override Task<RpcResult<BenchmarkMessage>> TestAsync(BenchmarkMessage req)
